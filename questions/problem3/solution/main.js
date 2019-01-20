@@ -54,46 +54,45 @@ let sellers = [
     ]
   }
 ]
-// location has two properties: city and country
-let elemOfItemLocation = function(location) {
+
+// location has properties city and country
+let elemOfShippingLocation = function(location) {
   return React.createElement(
     "div",
     {},
     "ships from " + location.city + "," + location.country
   )
 }
-
-// item has 4 properties: description, price, id and shipsFrom
+// item has properties price, description, itemid and shipsFrom
 let elemOfItem = function(item) {
   return React.createElement(
     "div",
     {},
-    React.CreateElement("h3", {}, item.description),
-    React.CreateElement("h5", {}, item.price + "$"),
-    React.CreateElement("div", {}, "id" + item.id),
-    elemOfItemLocation(item.shipsFrom)
+    React.createElement("h3", {}, item.description),
+    "price: " + item.price + " $",
+    React.createElement("div", {}, "item id: " + item.itemid),
+    elemOfShippingLocation(item.shipsFrom)
   )
 }
-
-// location has two properties: city and country
+// location has properties city and country
 let elemOfSellerLocation = function(location) {
   return React.createElement(
     "div",
     {},
-    "lives in " + location.city + "," + location.country
+    "seller location: " + location.city + "," + location.country
   )
 }
-
-// seller has three properties: name, location and items
+// seller has properties name, location and items
 let elemOfSeller = function(seller) {
   return React.createElement(
     "div",
     {},
-    React.createElement("h2", {}, seller.name),
+    React.createElement("h1", {}, "name: " + seller.name),
     elemOfSellerLocation(seller.location),
     seller.items.map(elemOfItem)
   )
 }
 
-let topLevel = sellers.map(elemOfSeller)
-ReactDOM.render(topLevel, document.getElementById("root"))
+let sellerElements = sellers.map(elemOfSeller)
+
+ReactDOM.render(sellerElements, document.getElementById("root"))
