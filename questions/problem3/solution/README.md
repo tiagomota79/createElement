@@ -1,4 +1,7 @@
 How to solve problem 1
+
+Follow along video: https://youtu.be/CuIvYZ5US0Q
+
 Steps:
 
 1.  Create an index.html file that contains the react and react dom libraries

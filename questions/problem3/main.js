@@ -43,9 +43,9 @@ let sellers = [
         }
       },
       {
-        itemid: 1,
         price: 30000,
         description: "A nice boat",
+        itemid: 1,
         shipsFrom: {
           city: "Seoul",
           country: "Korea"
