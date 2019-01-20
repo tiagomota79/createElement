@@ -1,3 +1,3 @@
-Rewrite problems 3,4,5,6 into JSX.
-Here is a demo of problem 3: https://youtu.be/tRFbtz1tw0s
-Please follow along the video first
+Rewrite the source code of problems 3,4,5 into JSX. You'll need to use create-react-app to install the tools needed to use JSX. Here are step by step instrutions: https://youtu.be/tRFbtz1tw0s
+
+Once you've followed along with the video, try to do yourself from scratch.
