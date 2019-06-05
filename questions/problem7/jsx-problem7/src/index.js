@@ -12,12 +12,22 @@ let elemAttraction = function(attraction) {
         <img src={attraction.picture} />
         <h1 id='name'>{attraction.name}</h1>
         <div id='text'>
-          The {attraction.name} in {attraction.location.city} (
+          The <b>{attraction.name}</b> in {attraction.location.city} (
           {attraction.location.country}) receives{' '}
           {attraction.visitorsPerYear
             .toString()
             .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')}{' '}
-          visitors per year, who pay {attraction.entrancePrice}$ to see it.
+          visitors per year, who pay {attraction.entrancePrice}$ to see it.{' '}
+          {Math.max.apply(
+            Math,
+            touristAttractions.map(function(value) {
+              return value.visitorsPerYear;
+            })
+          ) === attraction.visitorsPerYear ? (
+            <b>It's the most visited attraction in the world.</b>
+          ) : (
+            ''
+          )}
         </div>
       </div>
     </div>
