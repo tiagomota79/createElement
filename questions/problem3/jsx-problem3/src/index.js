@@ -1,3 +1,6 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 let sellers = [
   {
     name: 'bob',
@@ -56,39 +59,34 @@ let sellers = [
 ];
 
 let elemItemShippingLocation = function(location) {
-  return React.createElement(
-    'div',
-    {},
-    `Ships from ${location.city}, ${location.country}`
-  );
+  return <div>{`Ships from ${location.city}, ${location.country}`}</div>;
 };
 
 let elemItem = function(item) {
-  return React.createElement(
-    'div',
-    {},
-    React.createElement('h3', {}, item.description),
-    `Price: ${item.price}$`,
-    React.createElement('div', {}, `Item ID: ${item.itemid}`),
-    elemItemShippingLocation(item.shipsFrom)
+  return (
+    <div>
+      <h3>{item.description}</h3>
+      Price: {item.price}$<div>Item ID: {item.itemid}</div>
+      {elemItemShippingLocation(item.shipsFrom)}
+    </div>
   );
 };
 
 let elemSellerLocation = function(location) {
-  return React.createElement(
-    'div',
-    {},
-    `Seller location: ${location.city}, ${location.country}`
+  return (
+    <div>
+      Seller location: {location.city}, {location.country}
+    </div>
   );
 };
 
 let elemSeller = function(seller) {
-  return React.createElement(
-    'div',
-    {},
-    React.createElement('h1', {}, seller.name),
-    elemSellerLocation(seller.location),
-    seller.items.map(elemItem)
+  return (
+    <div>
+      <h1>{seller.name}</h1>
+      {elemSellerLocation(seller.location)}
+      {seller.items.map(elemItem)}
+    </div>
   );
 };
 

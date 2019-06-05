@@ -1,4 +1,4 @@
-let touristAttractions = [
+export const touristAttractions = [
   {
     name: 'Eiffel tower',
     location: {

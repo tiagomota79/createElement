@@ -1,3 +1,6 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 let datingProfiles = [
   {
     lookingFor: { gender: 'female', kids: 'not ok', smoking: false },
@@ -35,19 +38,20 @@ let datingProfiles = [
       title: 'CEO',
       salary: '900000',
       location: {
-        city: 'Vacouver',
+        city: 'Vancouver',
         province: 'British Colombia',
         country: 'Canada',
       },
     },
   },
 ];
+window.datingProfiles = datingProfiles;
 
 //Location has properties city, province and country
 let elemLocation = function(location) {
   return (
     <div>
-      From {location.city}, {location.province}, {location.country}
+      {location.city}, {location.province}, {location.country}
     </div>
   );
 };
@@ -56,9 +60,9 @@ let elemLocation = function(location) {
 let elemOcc = function(occupation) {
   return (
     <div>
-      Occupation: {occupation.title}
-      Salary: {occupation.salary}
+      {occupation.title[0].toUpperCase() + occupation.title.slice(1)} from
       {elemLocation(occupation.location)}
+      Salary: {occupation.salary}$
     </div>
   );
 };
@@ -67,9 +71,9 @@ let elemOcc = function(occupation) {
 let elemLookingFor = function(lookingFor) {
   return (
     <div>
-      Gender: {lookingFor.gender}
-      Kids: {lookingFor.kids}
-      Smoking: {lookingFor.smoking === false ? 'Unnacepted' : 'Accepted'}
+      {lookingFor.gender},{' '}
+      {lookingFor.kids === 'ok' ? 'can have kids' : 'without kids'}, smoking{' '}
+      {lookingFor.smoking === false ? 'unnacepted' : 'accepted'}
     </div>
   );
 };
@@ -78,16 +82,13 @@ let elemLookingFor = function(lookingFor) {
 let elemDatingProfiles = function(datingProfile) {
   return (
     <div>
-      <h1>{datingProfiles.name}</h1>
-      <h3>
-        Looking for:
-        {elemLookingFor(datingProfiles.lookingFor)}
-      </h3>
-      <div>{elemOcc(datingProfiles.occupation)}</div>
+      <h1>{datingProfile.name}</h1>
+      <div>{elemOcc(datingProfile.occupation)}</div>
+      <h3>Looking for: {elemLookingFor(datingProfile.lookingFor)}</h3>
     </div>
   );
 };
 
-let profilesArray = datingProfiles.map(elemDatingProfiles);
+let profilesElements = datingProfiles.map(elemDatingProfiles);
 
-ReactDOM.render(profilesArray, document.getElementById('root'));
+ReactDOM.render(profilesElements, document.getElementById('root'));
